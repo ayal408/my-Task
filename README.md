@@ -34,3 +34,8 @@
 ממשק: מתוך client הריצי `npm ci` ואז `npm run dev`; לשימוש API בפיתוח יש להשתמש בשער Nginx או להגדיר proxy מקומי.
 בדיקות: `pip install pytest httpx` ואז `python -m pytest tests -q`.
 סכמת מסד הנתונים נוצרת בהפעלה הראשונה. לשינויי סכמה עתידיים יש להוסיף מיגרציות Alembic; create_all אינו משנה טבלאות קיימות.
+
+## NetFree / SSL בבנייה
+סקריפט start.ps1 מאתר תעודות ציבוריות של NetFree במאגרי Root ו-CA של Windows ומעתיק אותן לבנייה של השרת והממשק. אימות SSL נשאר פעיל. לא מועתקים מפתחות פרטיים. קובצי התעודה המקומיים מוחרגים מ-Git.
+אם אין זיהוי אוטומטי, שמרי תעודת CA בפורמט PEM בשם `netfree.crt` בשתי התיקיות `server/certs` ו-`client/certs`, והריצי שוב את הסקריפט. ניתן לקבל את התעודה המותקנת ממנהל התעודות של Windows.
+לאחר עדכון: `git pull --ff-only` ואז `powershell -ExecutionPolicy Bypass -File .\start.ps1`.
